@@ -4,9 +4,11 @@ import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin
 @RestController
+@RequestMapping("/")
 public class HelloWorldController {
-    @RequestMapping("/")
+
+    @GetMapping()
     public String hello() {
-        return "Hello, World";
+        return "Hello, World: /";
     }
 }

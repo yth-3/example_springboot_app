@@ -34,7 +34,7 @@ jobs:
         run: mvn clean install
       
       - name: Run Server
-        run: java -jar target/sba-1.0-SNAPSHOT.jar
+        run: java -jar target/sba-1.0-SNAPSHOT.jar &
 
 #       - name: Deploy to Elastic Beanstalk
 #         uses: einaregilsson/beanstalk-deploy@v20

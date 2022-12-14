@@ -18,34 +18,27 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: checkout source
-      uses: actions/checkout@v3
 
-    - name: supply yaml
-      uses: "DamianReeves/write-file-action@master"
-      with:
-        path: src/main/resources/application.yaml
-        write-mode: overwrite
-        contents: |
-          ${{ secrets.APPLICATION_YML }}
+      - name: Checkout source code
+        uses: actions/checkout@v2
 
-    # - name: Set up JDK 8
-    #   uses: actions/setup-java@v3
-    #   with:
-    #     java-version: '18'
-    #     distribution: 'temurin'
-    #     cache: maven
+      - name: Overwrite file
+        uses: "DamianReeves/write-file-action@master"
+        with:
+          path: src/main/resources/application.yml
+          write-mode: overwrite
+          contents: |
+            ${{ secrets.APPLICATION_YML }}
+      - name: Build with Maven
+        run: mvn clean install
 
-    - name: Build with Maven
-      run: mvn clean install
-
-    - name: Deploy to Elastic Beanstalk
-      uses: einaregilsson/beanstalk-deploy@v20
-      with:
-        aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
-        aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        application_name: example-app3
-        environment_name: Exampleapp3-env
-        version_label: 1-${{ github.sha }}
-        region: us-east-1
-        deployment_package: target/sba-1.0-SNAPSHOT.jar
+      - name: Deploy to Elastic Beanstalk
+        uses: einaregilsson/beanstalk-deploy@v20
+        with:
+          aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
+          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          application_name: example-app3
+          environment_name: Exampleapp3-env
+          version_label: 1-${{ github.sha }}
+          region: us-east-1
+          deployment_package: target/sba-1.0-SNAPSHOT.jar

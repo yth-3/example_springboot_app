@@ -48,4 +48,4 @@ jobs:
         environment_name: Exampleapp-env
         version_label: 1
         region: us-east-1
-        deployment_package: target/yolp-1.0-SNAPSHOT.jar
+        deployment_package: target/sba-1.0-SNAPSHOT.jar

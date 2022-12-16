@@ -9,4 +9,9 @@ public class LogicTest {
     public void test_LogicTest_sum() {
         assertEquals(2, Logic.sum(1, 1));
     }
+    
+    @Test
+    public void test_LogicTest_sum() {
+        assertEquals(3, Logic.sum(1, 1));   
+    }
 }

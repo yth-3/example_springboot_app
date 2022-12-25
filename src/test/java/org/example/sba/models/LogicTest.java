@@ -14,4 +14,9 @@ public class LogicTest {
     public void test_LogicTest_sum2() {
         assertEquals(3, Logic.sum(1, 2));   
     }
+    
+    @Test
+    public void test_LogicTest_sum3() {
+        assertEquals(3, Logic.sum(Logic.sum(1, 1), 1));   
+    }
 }

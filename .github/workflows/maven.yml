@@ -10,7 +10,6 @@ name: Java CI with Maven
 
 on:
   push:
-    branches: [ "main" ]
 
   workflow_dispatch:
 
@@ -32,14 +31,17 @@ jobs:
 
       - name: Build with Maven
         run: mvn clean install
+      
+#       - name: Run Server
+#         run: java -jar target/sba-1.0-SNAPSHOT.jar
 
-      - name: Deploy to Elastic Beanstalk
-        uses: einaregilsson/beanstalk-deploy@v20
-        with:
-          aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
-          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          application_name: example-app
-          environment_name: Exampleapp-env
-          version_label: 0-${{ github.sha }}-${{ github.job }}
-          region: us-east-1
-          deployment_package: target/sba-1.0-SNAPSHOT.jar
+#       - name: Deploy to Elastic Beanstalk
+#         uses: einaregilsson/beanstalk-deploy@v20
+#         with:
+#           aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
+#           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+#           application_name: example-app2
+#           environment_name: Exampleapp2-env-1
+#           version_label: 0-${{ github.sha }}-${{ github.job }}
+#           region: us-east-1
+#           deployment_package: target/sba-1.0-SNAPSHOT.jar

@@ -40,8 +40,8 @@ jobs:
         with:
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          application_name: deploy_example
-          environment_name: Deployexample-env
+          application_name: 'Blank Java'
+          environment_name: Blankjava-env
           version_label: 0-${{ github.sha }}-${{ github.job }}
           region: us-east-1
           deployment_package: target/sba-1.0-SNAPSHOT.jar

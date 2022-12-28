@@ -52,4 +52,4 @@ jobs:
           environment_name: Blankjava-env
           version_label: 1-${{ github.sha }}-${{ github.job }}
           region: us-east-1
-          deployment_package: target/sba-1.0-SNAPSHOT.jar
+          deployment_package: target/sylvester-1.0.0-SNAPSHOT.jar
